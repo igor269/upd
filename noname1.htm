@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+ <html>
+  <head>
+  <meta charset='windows-1251'>
+  <title>Кнопка</title>
+  <style>
+   .butt_w {
+    background: #f2f6f8; /* Цвет фона */
+    border: 1px solid #7a7b7e; /* Параметры рамки */
+    width: 40px; /* Ширина кнопки */
+    height: 30px; /* Высота */
+    border-radius: 10px;
+   }
+  </style>
+  
+  
+  <script>
+  var i=0;
+   
+  var  n = 3, m = 10;//n - номер timer; m[0] - timerOn; m[1] - timerOff; m[2] - timer week
+var timer = [];		 // обнуления массива
+for (var i = 0; i < m; i++){
+    timer[i] = [];
+    for (var j = 0; j < n; j++){
+        timer[i][j] = 0;
+}}
+
+  
+	 
+	  function ch_w(week,n){
+			timer[0][2]=timer[0][2]^(1<<n);
+	  	if (timer[0][2]&(1<<n)){
+			week.style="background-color:yellow;"
+		;
+		}else{ 
+			week.style="background-color:#f2f6f8;"
+		}
+	formtext1.value=timer[0][2];
+	   }
+	   function zagruzka(){
+	   var b='';
+	   i = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+		   for (a=0; a<7; a++){
+		   b += "<input class='butt_w' type='button' id='timer_w'"+ a + " value='"+i[a]+"' onclick='ch_w(this,"+a+");'>"; document.getElementById('formtext1').value+=i[a];	}
+	   	document.getElementById('weeks').innerHTML = b;
+	   }
+ 
+  </script>
+ </head>
+ <body onload="zagruzka();">
+  <p id='weeks'>
+<!--  <input class='butt_w' type='button' id='timer_w'+i value='Mon' onclick='ch_w(this,0);'>
+  <input class='butt_w' type='button' id='timer_w'+i value='Tue' onclick='ch_w(this,1);'>
+  <input class='butt_w' type='button' id='timer_w'+i value='Wed' onclick='ch_w(this,2);'>
+  <input class='butt_w' type='button' id='timer_w'+i value='Thu' onclick='ch_w(this,3);'>
+  <input class='butt_w' type='button' id='timer_w'+i value='Fri' onclick='ch_w(this,4);'>
+  <input class='butt_w' type='button' id='timer_w'+i value='Sat' onclick='ch_w(this,5);'>
+  <input class='butt_w' type='button' id='timer_w'+i value='Sun' onclick='ch_w(this,6);'>
+-->
+</p>
+<form name="form1">
+<p><input type="text" id="formtext1"></p>
+</form>
+<p>&nbsp;</p>
+</body>
+</html>
